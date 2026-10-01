@@ -1,7 +1,7 @@
 
 import  { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Recipedetail from '../pages/RecipeDetail'
+import Recipedetail from '../pages/Recipedetail'
 const Details = () => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
