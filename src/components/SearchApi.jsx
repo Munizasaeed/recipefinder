@@ -7,6 +7,7 @@ const SearchApi = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const[lastSearchedTerm, setLastSearchedTerm] = useState('');
+    const [noResultsTerm, setNoResultsTerm] = useState('');
 
     const handleSearch = async () => {
         if (!searchTerm.trim()) return;
@@ -20,6 +21,9 @@ const SearchApi = () => {
             }
             const data = await response.json();
             setSearchResults(data.meals || []);
+            if (!data.meals) {
+    setNoResultsTerm(searchTerm);
+}
         } catch (error) {
             setError(error.message);
         } finally {
@@ -37,6 +41,8 @@ const SearchApi = () => {
             error={error}
             lastSearchedTerm={lastSearchedTerm}
             setLastSearchedTerm={setLastSearchedTerm}
+             noResultsTerm={noResultsTerm}
+             setNoResultsTerm={setNoResultsTerm}
         />
     );
 };

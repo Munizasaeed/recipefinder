@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-const Hero = ({ searchTerm, setSearchTerm, setLastSearchedTerm, onSearch, searchResults, loading, error, lastSearchedTerm }) => {
+const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm,setNoResultsTerm, loading, error, lastSearchedTerm }) => {
   return (
     <section className="bg-[#F9F6F0] bg-cover bg-center py-16 px-6 text-center">
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium mb-4">Find Your Perfect Recipe</h1>
@@ -12,7 +12,7 @@ const Hero = ({ searchTerm, setSearchTerm, setLastSearchedTerm, onSearch, search
           <input
             type="text"
             value={searchTerm}
-            onChange={(e) => { setSearchTerm(e.target.value); setLastSearchedTerm(''); }}
+            onChange={(e) => { setSearchTerm(e.target.value);  setNoResultsTerm(''); }}
             placeholder="Search for recipes..."
             className="flex-1 py-2 px-2 focus:outline-none"
           />
@@ -27,8 +27,8 @@ const Hero = ({ searchTerm, setSearchTerm, setLastSearchedTerm, onSearch, search
         
         {loading && <p>Loading...</p>}
         {error && <p className="text-red-500">{error}</p>}
-        {!loading && !error && searchResults.length === 0 && searchResults.length === 0 && lastSearchedTerm.trim() !== '' && (
-          <p className="font-bold text-red-600 text-2xl">No results found for "{lastSearchedTerm}"</p>
+        {!loading && !error && searchResults.length === 0  && noResultsTerm.trim() !== '' && (
+          <p className="font-bold text-red-600 text-2xl">No results found for "{noResultsTerm}"</p>
         )}
         {!loading && !error && searchResults.length > 0 && (
           <>

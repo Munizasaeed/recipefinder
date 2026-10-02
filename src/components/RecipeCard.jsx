@@ -2,9 +2,10 @@ import { Link } from "react-router-dom"
 const RecipeCard = ({fetchRecipes}) => {
   return (
     <div className="px-4 mb-6 mt-5">
-    <h2 className="text-2xl md:text-3xl px-4 font-semibold">Explore Recipes</h2>
+    <h2 className="text-2xl md:text-4xl text-orange-500 font-bold px-4 text-center ">Explore Recipes</h2>
+    <p className="text-center mt-2 px-4 italic text-xl">Discover delicious recipes and new meals from around the world!</p>
     <div className="grid grid-cols-1 mt-7  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4">
-      {fetchRecipes.slice(0, 8).map((recipe) => (
+      {fetchRecipes.slice(0, 12).map((recipe) => (
         <div key={recipe.idMeal} className="bg-white border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
           <img 
             src={recipe.strMealThumb} 
