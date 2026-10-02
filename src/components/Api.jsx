@@ -36,7 +36,7 @@ const Api = () => {
 }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className='text-5xl text-red-700 font-bold text-center m-14'>{error}</div>;
     }
 
     return (

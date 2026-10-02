@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Contact from "./pages/Contact";
-// import Recipedetail from './pages/Recipedetail'
 import Details from "./components/Details";
 function App() {
   return (

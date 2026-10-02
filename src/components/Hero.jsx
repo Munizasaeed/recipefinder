@@ -1,5 +1,16 @@
 import { Link } from "react-router-dom"
+import {useContext} from 'react'
+import FavoritesContext from "../context/FavoritesContext";
 const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm,setNoResultsTerm, loading, error, lastSearchedTerm }) => {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+    const handleFavoriteClick = (recipe) => {
+    const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
+    if(isFavorite) {
+      setFavorites(favorites.filter((fav) => fav.idMeal !== recipe.idMeal));
+    } else {
+      setFavorites([...favorites, recipe]);
+    }
+  };
   return (
     <section className="bg-[#F9F6F0] bg-cover bg-center py-16 px-6 text-center">
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium mb-4">Find Your Perfect Recipe</h1>
@@ -35,10 +46,21 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
              <h2 className="text-2xl font-semibold mb-4 text-left px-4"> Results for {lastSearchedTerm}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 text-left">
             {searchResults.map((recipe) => (
-              <Link to={`/recipe/${recipe.idMeal}`} key={recipe.idMeal} className="bg-white rounded-lg shadow-md p-4">
+              <div key={recipe.idMeal} className="bg-white rounded-lg shadow-md p-4  flex flex-col">
                 <img src={recipe.strMealThumb} alt={recipe.strMeal} className="w-full h-40 object-cover rounded-md mb-2" />
-                <h3 className="font-semibold">{recipe.strMeal}</h3>
-              </Link>
+             <div className="flex items-start justify-between gap-2 mb-3">
+            <h2 className="text-lg font-semibold">{recipe.strMeal}</h2>
+            <span 
+              className={`text-5xl cursor-pointer leading-none shrink-0 self-center ${favorites.some((fav) => fav.idMeal === recipe.idMeal) ? 'text-red-500' : 'text-gray-300'}`}
+              onClick={() => handleFavoriteClick(recipe)}
+            >
+              {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? '❤' : '♡'}
+            </span> 
+          </div>
+            <Link to={`/recipe/${recipe.idMeal}`} className="w-full bg-orange-500 px-6 text-white py-2 text-center rounded-md hover:bg-orange-600 mt-auto">
+            View Recipe
+          </Link>
+              </div>
             ))}
           </div>
           </>
