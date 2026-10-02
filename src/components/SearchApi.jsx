@@ -6,11 +6,13 @@ const SearchApi = () => {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const[lastSearchedTerm, setLastSearchedTerm] = useState('');
 
     const handleSearch = async () => {
         if (!searchTerm.trim()) return;
         setLoading(true);
         setError(null);
+        setLastSearchedTerm(searchTerm);
         try {
             const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`);
             if (!response.ok) {
@@ -33,6 +35,8 @@ const SearchApi = () => {
             searchResults={searchResults}
             loading={loading}
             error={error}
+            lastSearchedTerm={lastSearchedTerm}
+            setLastSearchedTerm={setLastSearchedTerm}
         />
     );
 };
