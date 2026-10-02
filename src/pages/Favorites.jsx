@@ -1,12 +1,58 @@
+import { useContext } from "react";
+import Navbar from "../components/Navbar";
+import FavoritesContext from "../context/FavoritesContext";
+import { Link } from "react-router-dom";
 
-import Navbar from '../components/Navbar'
 const Favorites = () => {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+
+  const handleRemove = (id) => {
+    setFavorites(favorites.filter((fav) => fav.idMeal !== id));
+  };
+
   return (
     <div>
       <Navbar />
-      favorites
-    </div>
-  )
-}
+      <div className="px-4 mb-6 mt-5">
+        <h2 className="text-2xl md:text-4xl text-orange-500 font-bold text-center">
+          Your Favorites
+        </h2>
 
-export default Favorites
+        {favorites.length === 0 ? (
+          <p className="text-center mt-4 text-gray-500">
+            No favorites yet. Go add some recipes you love!
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {favorites.map((recipe) => (
+              <div key={recipe.idMeal} className="bg-white border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
+                <img
+                  src={recipe.strMealThumb}
+                  alt={recipe.strMeal}
+                  className="w-full h-48 object-cover rounded-md mb-3"
+                />
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <h2 className="text-lg font-semibold">{recipe.strMeal}</h2>
+                  <span
+                    className="text-5xl cursor-pointer leading-none shrink-0 self-center text-red-500"
+                    onClick={() => handleRemove(recipe.idMeal)}
+                  >
+                    ♡
+                  </span>
+                </div>
+                <Link
+                  to={`/recipe/${recipe.idMeal}`}
+                  className="w-full bg-orange-500 text-white py-2 text-center rounded-md hover:bg-orange-600 mt-auto"
+                >
+                  View Recipe
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Favorites;
