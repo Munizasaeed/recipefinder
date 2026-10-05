@@ -1,11 +1,13 @@
 import Navbar from '../components/Navbar'
-const Contact = () => {
+import Contact from '../components/Contact'
+const Contacts = () => {
   return (
-    <div>
+ 
+      <div className="max-w-325 mx-auto">
       <Navbar />
-      
-    </div>
+       <Contact />
+</div>
   )
 }
 
-export default Contact
+export default Contacts

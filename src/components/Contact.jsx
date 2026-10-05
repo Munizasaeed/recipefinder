@@ -1,0 +1,150 @@
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faEnvelope, faPhone, faMapMarkerAlt, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+
+const contactInfo = [
+  {
+    icon: faEnvelope,
+    title: "Email",
+    value: "support@recipefinder.com",
+  },
+  {
+    icon: faPhone,
+    title: "Phone",
+    value: "+1 555-RECIPE-X",
+  },
+  {
+    icon: faMapMarkerAlt,
+    title: "Address",
+    value: "123 Flavor Street, Kitchen Town, CA 90210",
+  },
+];
+const Contact = () => {
+    const [formData,setFormData]=useState({
+     name: '',
+  email: '',
+  subject: '',
+  message: ''
+})
+const [error,setError]=useState("");
+const handlesubmit=(e)=>{
+    e.preventDefault();
+    if(formData.name =="" ||  formData.email ==""|| formData.subject == "" ||formData.message==""){
+        setError("filled all field")
+    }
+    else if(formData.message.length<10){
+        setError("length is short")
+    }
+     else{
+        setError("success")
+    }
+}
+  return (
+    <div className="bg-[#F9F6F0] text-gray-800 min-h-screen p-6 md:p-12 flex items-center justify-center">
+      <div className="max-w-7xl w-full mx-auto">
+        {/* Added items-stretch to force equal height on both columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          {/* --- LEFT COLUMN: CONTACT DETAILS --- */}
+          <div className="flex flex-col justify-between gap-4">
+            
+            {/* Email, Phone, Address Cards */}
+            {contactInfo.map((info, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center gap-6 flex-1"
+              >
+                {/* Circle Container with FontAwesome Icon */}
+                <div className="w-14 h-14 rounded-full bg-[#A0522D]/10 flex items-center justify-center shrink-0 text-[#A0522D]">
+                  <FontAwesomeIcon icon={info.icon} className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {info.title}
+                  </h3>
+                  <p className="text-gray-700 mt-1">{info.value}</p>
+                </div>
+              </div>
+            ))}
+
+            {/* --- SOCIAL LINKS CARD --- */}
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center gap-6 flex-1">
+              <div className="w-14 h-14 rounded-full bg-[#A0522D]/10 flex items-center justify-center shrink-0 text-[#A0522D]">
+                <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">Social Links</h3>
+                <div className="flex items-center gap-5 mt-3 text-[#A0522D]">
+                  <a href="#facebook" className="hover:text-[#8B4513] transition-colors">
+                    <FontAwesomeIcon icon={faFacebookF} className="text-xl" />
+                  </a>
+                  <a href="#instagram" className="hover:text-[#8B4513] transition-colors">
+                    <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+                  </a>
+                  <a href="#youtube" className="hover:text-[#8B4513] transition-colors">
+                    <FontAwesomeIcon icon={faYoutube} className="text-xl" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* --- RIGHT COLUMN: CONTACT FORM --- */}
+          <div className="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-md h-full flex flex-col justify-between">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Contact Form
+            </h2>
+
+            <form onSubmit={handlesubmit} className="flex flex-col gap-4 flex-1 justify-between">
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={formData.name}
+      onChange={(e) =>{ setFormData({...formData, name: e.target.value}); setError('');}}
+      
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+              />
+
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e)=>{setFormData({...formData,email:e.target.value}); setError('');}}
+                placeholder="Email Address"
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+              />
+
+              <input
+                type="text"
+                placeholder="Subject"
+                   value={formData.subject}
+                onChange={(e)=>{setFormData({...formData,subject:e.target.value}); setError('');}}
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+              />
+             <p className="text-sm text-gray-500 text-right">{formData.subject.length} characters</p>
+
+              <textarea
+                rows="4"
+                placeholder="Your Message"
+                   value={formData.message}
+                onChange={(e)=>{setFormData({...formData,message:e.target.value}); setError('');}}
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400 resize-none flex-1"
+              />
+              <p className={error === "success" ? "text-green-600" : "text-red-600"}>{error}</p>
+              <button
+                type="submit" onSubmit={handlesubmit}
+                className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white font-medium py-3.5 rounded-lg shadow-sm transition-colors duration-200 cursor-pointer flex items-center justify-center gap-2"
+              >
+                <FontAwesomeIcon icon={faPaperPlane} />
+                Send Message
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
