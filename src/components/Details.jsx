@@ -29,9 +29,14 @@ const {id}= useParams();
         fetchRecipes();
     }, [id]);
 
-    if (loading) {
-        return <div>Loading recipes...</div>;
-    }
+     if (loading) {
+    return (
+        <div className="flex flex-col items-center justify-center py-10">
+            <div className="w-20 h-20 border-8 border-gray-200 border-t-orange-500 rounded-full animate-spin"></div>
+            <p className="mt-3 text-gray-500">Loading recipes...</p>
+        </div>
+    );
+}
 
     if (error) {
         return <div>{error}</div>;

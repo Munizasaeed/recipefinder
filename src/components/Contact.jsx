@@ -28,18 +28,25 @@ const Contact = () => {
   message: ''
 })
 const [error,setError]=useState("");
-const handlesubmit=(e)=>{
-    e.preventDefault();
-    if(formData.name =="" ||  formData.email ==""|| formData.subject == "" ||formData.message==""){
-        setError("filled all field")
-    }
-    else if(formData.message.length<10){
-        setError("length is short")
-    }
-     else{
-        setError("success")
-    }
-}
+const [isSubmitting, setIsSubmitting] = useState(false);
+
+const handlesubmit = (e) => {
+  e.preventDefault();
+  if (formData.name == "" || formData.email == "" || formData.subject == "" || formData.message == "") {
+    setError("filled all field");
+  }
+  else if (formData.message.length < 10) {
+    setError("length is short");
+  }
+  else {
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setError("success");
+      setFormData({ name: '', email: '', message: '', subject: '' });
+      setIsSubmitting(false);
+    }, 1500);
+  }
+};
   return (
     <div className="bg-[#F9F6F0] text-gray-800 min-h-screen p-6 md:p-12 flex items-center justify-center">
       <div className="max-w-7xl w-full mx-auto">
@@ -131,13 +138,14 @@ const handlesubmit=(e)=>{
                 className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400 resize-none flex-1"
               />
               <p className={error === "success" ? "text-green-600" : "text-red-600"}>{error}</p>
-              <button
-                type="submit" onSubmit={handlesubmit}
-                className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white font-medium py-3.5 rounded-lg shadow-sm transition-colors duration-200 cursor-pointer flex items-center justify-center gap-2"
-              >
-                <FontAwesomeIcon icon={faPaperPlane} />
-                Send Message
-              </button>
+          <button
+  type="submit"
+  disabled={isSubmitting}
+  className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white font-medium py-3.5 rounded-lg shadow-sm transition-colors duration-200 cursor-pointer flex items-center justify-center gap-2"
+>
+  <FontAwesomeIcon icon={faPaperPlane} />
+  {isSubmitting ? "Sending..." : "Send Message"}
+</button>
             </form>
           </div>
 

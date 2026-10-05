@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { UtensilsCrossed} from "lucide-react";
 
 const Footer = () => {
@@ -14,17 +15,17 @@ const Footer = () => {
           <p>Discover delicious recipes and explore new meals <br></br> from around the world!</p>
       </div>
       <div className="ml-10 flex flex-col gap-2">
-        <p>Quick Links</p>
-        <p>Home</p>
-        <p>Favorites</p>
-        <p>About Us</p>
-        <p>Contact</p>
+          <p>Quick Links</p>
+            <Link to="/">Home</Link>
+          <Link to="/favorites">Favorites</Link>
+          <Link to="/">About Us</Link>
+          <Link to="/Contact">Contact</Link>
       </div>
        <div className="ml-10 flex flex-col gap-2">
-        <p>Contact</p>
-        <p>Email Us</p>
-        <p>Support</p>
-        <p>FAQ</p>
+          <Link to="/Contact">Contact</Link>
+          <Link to="/Contact">Email Us</Link>
+          <Link to="/Contact">Support</Link>
+          <Link to="/Contact">FAQ</Link>
       </div>
     </div>
   )
