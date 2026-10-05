@@ -1,6 +1,9 @@
 import {useContext} from 'react'
 import FavoritesContext from '../context/FavoritesContext'
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 const RecipeCard = ({fetchRecipes}) => {
   const { favorites, setFavorites } = useContext(FavoritesContext);
   const handleFavoriteClick = (recipe) => {
@@ -29,7 +32,11 @@ const RecipeCard = ({fetchRecipes}) => {
               className={`text-5xl cursor-pointer leading-none shrink-0 self-center ${favorites.some((fav) => fav.idMeal === recipe.idMeal) ? 'text-red-500' : 'text-gray-300'}`}
               onClick={() => handleFavoriteClick(recipe)}
             >
-              {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? '❤' : '♡'}
+              {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? (
+                <FontAwesomeIcon icon={solidHeart} />
+              ) : (
+                <FontAwesomeIcon icon={regularHeart} />
+              )}
             </span>
           </div>
           <Link to={`/recipe/${recipe.idMeal}`} className="w-full bg-orange-500 text-white py-2 text-center rounded-md hover:bg-orange-600 mt-auto">

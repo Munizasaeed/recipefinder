@@ -2,7 +2,9 @@ import { useContext } from "react";
 import Navbar from "../components/Navbar";
 import FavoritesContext from "../context/FavoritesContext";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 const Favorites = () => {
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
@@ -37,7 +39,7 @@ const Favorites = () => {
                     className="text-5xl cursor-pointer leading-none shrink-0 self-center text-red-500"
                     onClick={() => handleRemove(recipe.idMeal)}
                   >
-                    ♡
+                    <FontAwesomeIcon icon={solidHeart} />
                   </span>
                 </div>
                 <Link
