@@ -13,9 +13,10 @@ const Favorites = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="px-4 mb-6 mt-5">
+      <main className="flex-1">
+   <div className="px-4 mb-6 mt-5">
         <h2 className="text-2xl md:text-4xl text-orange-500 font-bold text-center">
           Your Favorites
         </h2>
@@ -33,13 +34,13 @@ const Favorites = () => {
                   alt={recipe.strMeal}
                   className="w-full h-48 object-cover rounded-md mb-3"
                 />
-                <div className="flex items-start justify-between gap-2 mb-3">
+                <div className="flex items-center justify-between gap-2 mb-2">
                   <h2 className="text-lg font-semibold">{recipe.strMeal}</h2>
                   <span
-                    className="text-5xl cursor-pointer leading-none shrink-0 self-center text-red-500"
+                    className=" cursor-pointer leading-none shrink-0 text-red-500"
                     onClick={() => handleRemove(recipe.idMeal)}
                   >
-                    <FontAwesomeIcon icon={solidHeart} />
+                    <FontAwesomeIcon icon={solidHeart}  style={{ fontSize: '20px' }}/>
                   </span>
                 </div>
                 <Link
@@ -53,6 +54,8 @@ const Favorites = () => {
           </div>
         )}
       </div>
+  </main>
+      
         <Footer />
     </div>
   

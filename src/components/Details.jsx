@@ -2,6 +2,7 @@
 import  { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Recipedetail from '../pages/Recipedetail'
+import Navbar from './Navbar'
 const Details = () => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -28,25 +29,16 @@ const {id}= useParams();
 
         fetchRecipes();
     }, [id]);
-
-     if (loading) {
-    return (
-        <div className="flex flex-col items-center justify-center py-10">
+return (
+  <div>
+    <Navbar />
+    {loading &&  <div className="flex flex-col items-center justify-center py-10">
             <div className="w-20 h-20 border-8 border-gray-200 border-t-orange-500 rounded-full animate-spin"></div>
             <p className="mt-3 text-gray-500">Loading recipes...</p>
-        </div>
-    );
-}
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    return (
-        <div>
-            <Recipedetail details={recipes} />
-        </div>
-    );
-};
+        </div>}
+    {error && <div className='text-red-500 text-2xl text-center'>{error}</div>}
+    {!loading && !error && <Recipedetail details={recipes} />}
+  </div>
+);}
 
 export default Details;

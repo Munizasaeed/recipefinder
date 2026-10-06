@@ -1,5 +1,4 @@
-import Navbar from "../components/Navbar"
-
+import Footer from "../components/Footer";
 const Recipedetail = ({ details }) => {
   // Helper function: ingredients + measurements ko ek array mein collect karta hai
   const getIngredients = (recipe) => {
@@ -15,9 +14,9 @@ const Recipedetail = ({ details }) => {
   };
 
   return (
-    <div>
-      <Navbar />
-      {details.map((recipe) => (
+    <div className="min-h-screen flex flex-col">
+       <main className="flex-1">
+   {details.map((recipe) => (
         <div key={recipe.idMeal} className="max-w-4xl mx-auto px-4 py-8">
           {/* Image + Title */}
          <img
@@ -60,6 +59,8 @@ const Recipedetail = ({ details }) => {
           </div>
         </div>
       ))}
+  </main>
+      <Footer />
     </div>
   )
 }

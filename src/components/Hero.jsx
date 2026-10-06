@@ -21,20 +21,20 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
         Discover Delicious Recipes, explore new flavors and find your next favourite meal
       </p>
 
-      <div className="mt-6 flex justify-center">
-        <div className="flex items-center w-full max-w-3xl border border-gray-300 rounded-2xl px-2 focus-within:ring-2 focus-within:ring-orange-500">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => { setSearchTerm(e.target.value);  setNoResultsTerm(''); }}
-            placeholder="Search for recipes..."
-            className="flex-1 py-2 px-2 focus:outline-none"
-          />
-          <button onClick={onSearch} className="bg-orange-500 text-white py-1.5 px-4 rounded-2xl hover:bg-orange-600 ml-2 my-1">
-            Search
-          </button>
-        </div>
-      </div>
+    <div className="mt-6 flex justify-center px-2">
+  <div className="flex items-center w-full max-w-3xl border border-gray-300 rounded-2xl px-2 focus-within:ring-2 focus-within:ring-orange-500">
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => { setSearchTerm(e.target.value); setNoResultsTerm(''); }}
+      placeholder="Search for recipes..."
+      className="flex-1 min-w-0 py-2 px-2 focus:outline-none"
+    />
+    <button onClick={onSearch} className="bg-orange-500 text-white py-1.5 px-3 sm:px-4 text-sm sm:text-base rounded-2xl hover:bg-orange-600 ml-2 my-1 shrink-0">
+      Search
+    </button>
+  </div>
+</div>
 
       {/* Results */}
       <div className="mt-8">
