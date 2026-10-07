@@ -26,41 +26,56 @@ const contactInfo = [
 ];
 const Contact = () => {
     const [formData,setFormData]=useState({
-     name: '',
+  name: '',
   email: '',
   subject: '',
   message: ''
 })
-const [error,setError]=useState("");
-const [isSubmitting, setIsSubmitting] = useState(false);
+const [error,setError]=useState({
+   name: '',
+  email: '',
+  subject: '',
+  message: ''
+})
 
+const [isSubmitting, setIsSubmitting] = useState(false);
+const [isSuccess, setIsSuccess] = useState(false);
 const handlesubmit = (e) => {
   e.preventDefault();
-  if (formData.name == "" || formData.email == "" || formData.subject == "" || formData.message == "") {
-    setError("filled all field");
+  
+  let newErrors = { name: '', email: '', subject: '', message: '' };
+  if (formData.name === '') {
+    newErrors.name = 'Name is required';
+  }
+  if (formData.email === '') {
+    newErrors.email = 'Email is required';
+  }
+  if (formData.subject === '') {
+    newErrors.subject = 'Subject is required';
+  }
+   if (formData.message === '') {
+    newErrors.message = 'Message is required';
   }
   else if (formData.message.length < 10) {
-    setError("length is short");
+     newErrors.message = 'length is short';
   }
   else {
     setIsSubmitting(true);
     setTimeout(() => {
-      setError("success");
+setIsSuccess(true);
       setFormData({ name: '', email: '', message: '', subject: '' });
       setIsSubmitting(false);
     }, 1500);
   }
+   setError(newErrors);
 };
   return (
     <div className="bg-[#F9F6F0] text-gray-800  p-6 md:p-12 flex items-center justify-center">
       <div className="max-w-7xl w-full mx-auto">
-        {/* Added items-stretch to force equal height on both columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">    
           {/* --- LEFT COLUMN: CONTACT DETAILS --- */}
           <div className="flex flex-col justify-between gap-4">
-            
-            {/* Email, Phone, Address Cards */}
+                  {/* Email, Phone, Address Cards */}
          {contactInfo.map((info, index) => (
   <a
     key={index}
@@ -74,7 +89,7 @@ const handlesubmit = (e) => {
     </div>
     <div>
       <h3 className="text-xl font-semibold text-gray-900">{info.title}</h3>
-      <p className="text-gray-700 mt-1">{info.value}</p>
+      <p className="text-gray-700 mt-1 break-all">{info.value}</p>
     </div>
   </a>
 ))}
@@ -133,36 +148,35 @@ const handlesubmit = (e) => {
                 type="text"
                 placeholder="Full Name"
                 value={formData.name}
-      onChange={(e) =>{ setFormData({...formData, name: e.target.value}); setError('');}}
+      onChange={(e) =>{ setFormData({...formData, name: e.target.value}); setError({...error, name: ''});setIsSuccess(false);}}
       
                 className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
               />
-
+<p className="text-red-600 text-sm">{error.name}</p>
               <input
                 type="email"
                 value={formData.email}
-                onChange={(e)=>{setFormData({...formData,email:e.target.value}); setError('');}}
+                onChange={(e)=>{setFormData({...formData,email:e.target.value}); setError({...error, email: ''});setIsSuccess(false);}}
                 placeholder="Email Address"
                 className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
               />
-
+              <p className="text-red-600 text-sm">{error.email}</p>
               <input
                 type="text"
                 placeholder="Subject"
                    value={formData.subject}
-                onChange={(e)=>{setFormData({...formData,subject:e.target.value}); setError('');}}
+                onChange={(e)=>{setFormData({...formData,subject:e.target.value}); setError({...error, subject: ''});setIsSuccess(false);}}
                 className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
               />
-             <p className="text-sm text-gray-500 text-right">{formData.subject.length} characters</p>
-
+              <p className="text-red-600 text-sm">{error.subject}</p>
               <textarea
                 rows="4"
                 placeholder="Your Message"
                    value={formData.message}
-                onChange={(e)=>{setFormData({...formData,message:e.target.value}); setError('');}}
+                onChange={(e)=>{setFormData({...formData,message:e.target.value}); setError({...error,message:""}); setIsSuccess(false);}}
                 className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400 resize-none flex-1"
               />
-              <p className={error === "success" ? "text-green-600" : "text-red-600"}>{error}</p>
+              <p className="text-red-600 text-sm">{error.message}</p>
           <button
   type="submit"
   disabled={isSubmitting}
@@ -171,6 +185,7 @@ const handlesubmit = (e) => {
   <FontAwesomeIcon icon={faPaperPlane} />
   {isSubmitting ? "Sending..." : "Send Message"}
 </button>
+{isSuccess && <p className="text-green-600">Message sent successfully!</p>}
             </form>
           </div>
 

@@ -54,14 +54,14 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
              <div className="flex items-start justify-between gap-2 mb-3">
             <h2 className="text-lg font-semibold">{recipe.strMeal}</h2>
             <span 
-              className={`text-5xl cursor-pointer leading-none shrink-0 self-center ${favorites.some((fav) => fav.idMeal === recipe.idMeal) ? 'text-red-500' : 'text-gray-300'}`}
+              className={` cursor-pointer leading-none shrink-0 self-center ${favorites.some((fav) => fav.idMeal === recipe.idMeal) ? 'text-red-500' : 'text-gray-300'}`}
               onClick={() => handleFavoriteClick(recipe)}
             >
               {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? (
-                <FontAwesomeIcon icon={solidHeart} />
-              ) : (
-                <FontAwesomeIcon icon={regularHeart} />
-              )}
+      <FontAwesomeIcon icon={solidHeart} className='text-red-500' style={{ fontSize: '20px' }} />
+    ) : (
+      <FontAwesomeIcon icon={regularHeart} className='text-gray-400' style={{ fontSize: '20px' }} />
+    )}
             </span> 
           </div>
             <Link to={`/recipe/${recipe.idMeal}`} className="w-full bg-orange-500 px-6 text-white py-2 text-center rounded-md hover:bg-orange-600 mt-auto">

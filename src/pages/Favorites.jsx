@@ -13,7 +13,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen max-w-325 mx-auto flex flex-col">
       <Navbar />
       <main className="flex-1">
    <div className="px-4 mb-6 mt-5">
