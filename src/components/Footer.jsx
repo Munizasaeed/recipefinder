@@ -11,7 +11,7 @@ const Footer = () => {
   Recipe<span className="block sm:inline"> Finder</span>
 </p>
         </div>
-        <p className="max-w-sm mx-auto mr-2">
+        <p className="max-w-sm  mr-2">
   Discover delicious recipes and explore new meals from around the world!
 </p>
       </div>

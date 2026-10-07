@@ -1,1 +1,5 @@
 @import "tailwindcss";
+body {
+    background-color: #F9F6F0;
+    /* ya jo bhi tumhara site ka primary color hai */
+}
