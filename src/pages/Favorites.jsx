@@ -28,7 +28,7 @@ const Favorites = () => {
         ) : (
           <div className="grid grid-cols-1 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {favorites.map((recipe) => (
-              <div key={recipe.idMeal} className="bg-white  transition duration-200 hover:-translate-y-1 hover:shadow-2xl border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
+              <div key={recipe.idMeal} className="bg-white card-animation  transition duration-200 hover:-translate-y-1 hover:shadow-2xl border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
                 <img
                   src={recipe.strMealThumb}
                   alt={recipe.strMeal}
