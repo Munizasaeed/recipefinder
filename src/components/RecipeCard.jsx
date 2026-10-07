@@ -15,7 +15,7 @@ const RecipeItem = ({ recipe, favorites, handleFavoriteClick }) => {
   setIsVisible(entry.isIntersecting);
 },
       {
-        threshold: 0.1,
+        threshold: 0.3,
       }
     );
 
