@@ -28,7 +28,7 @@ const Favorites = () => {
         ) : (
           <div className="grid grid-cols-1 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {favorites.map((recipe) => (
-              <div key={recipe.idMeal} className="bg-white border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
+              <div key={recipe.idMeal} className="bg-white  transition duration-200 hover:-translate-y-1 hover:shadow-2xl border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
                 <img
                   src={recipe.strMealThumb}
                   alt={recipe.strMeal}
@@ -40,7 +40,7 @@ const Favorites = () => {
                     className=" cursor-pointer leading-none shrink-0 text-red-500"
                     onClick={() => handleRemove(recipe.idMeal)}
                   >
-                    <FontAwesomeIcon icon={solidHeart}  style={{ fontSize: '20px' }}/>
+                    <FontAwesomeIcon icon={solidHeart}   className=" transition duration-200 hover:scale-110"  style={{ fontSize: '20px' }}/>
                   </span>
                 </div>
                 <Link

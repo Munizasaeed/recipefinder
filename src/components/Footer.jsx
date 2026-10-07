@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="flex flex-col ml-10 gap-2">
         <div className="flex  items-center gap-2">
                <UtensilsCrossed className="text-orange-500" size={36} />
-               <p className="text-base sm:text-lg md:text-3xl italic font-bold leading-tight">
+               <p className="text-base transition duration-200 hover:scale-105 sm:text-lg md:text-3xl italic font-bold leading-tight">
   Recipe<span className="block sm:inline"> Finder</span>
 </p>
         </div>
@@ -16,17 +16,17 @@ const Footer = () => {
 </p>
       </div>
       <div className=" ml-10 flex flex-col gap-2">
-          <p className="text-2xl font-bold text-orange-500">Quick Links</p>
-            <Link to="/">Home</Link>
-          <Link to="/favorites">Favorites</Link>
-          <Link to="/">About Us</Link>
-          <Link to="/Contact">Contact</Link>
+          <p className="text-2xl font-bold text-orange-500 transition duration-200 hover:text-orange-700">Quick Links</p>
+            <Link to="/" className="transition duration-200 hover:font-bold">Home</Link>
+          <Link to="/favorites" className="transition duration-200 hover:font-bold">Favorites</Link>
+          <Link to="/" className="transition duration-200 hover:font-bold">About Us</Link>
+          <Link to="/Contact" className="transition duration-200 hover:font-bold">Contact</Link>
       </div>
        <div className="ml-10 flex flex-col gap-2">
-          <Link to="/Contact" className="text-xl font-bold text-orange-500">Contact</Link>
-          <Link to="/Contact">Email Us</Link>
-          <Link to="/Contact">Support</Link>
-          <Link to="/Contact">FAQ</Link>
+          <Link to="/Contact" className="text-xl font-bold text-orange-500 transition duration-200 hover:text-orange-700">Contact</Link>
+          <Link to="/Contact" className="transition duration-200 hover:font-bold">Email Us</Link>
+          <Link to="/Contact" className="transition duration-200 hover:font-bold">Support</Link>
+          <Link to="/Contact" className="transition duration-200 hover:font-bold">FAQ</Link>
       </div>
     </div>
   )

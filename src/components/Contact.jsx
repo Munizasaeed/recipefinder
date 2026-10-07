@@ -82,7 +82,7 @@ setIsSuccess(true);
     href={info.link}
     target={info.external ? "_blank" : undefined}
   rel={info.external ? "noopener" : undefined}
-    className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center gap-6 flex-1 hover:shadow-md transition-shadow"
+    className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 shadow-sm flex items-center gap-6 flex-1 hover:shadow-md transition-shadow"
   >
     <div className="w-14 h-14 rounded-full bg-[#A0522D]/10 flex items-center justify-center shrink-0 text-[#A0522D]">
       <FontAwesomeIcon icon={info.icon} className="text-xl" />
@@ -94,7 +94,7 @@ setIsSuccess(true);
   </a>
 ))}
             {/* --- SOCIAL LINKS CARD --- */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center gap-6 flex-1">
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 shadow-sm flex items-center gap-6 flex-1">
               <div className="w-14 h-14 rounded-full bg-[#A0522D]/10 flex items-center justify-center shrink-0 text-[#A0522D]">
                <a 
     href="https://instagram.com/recipefinder" 
@@ -138,19 +138,19 @@ setIsSuccess(true);
           </div>
 
           {/* --- RIGHT COLUMN: CONTACT FORM --- */}
-          <div className="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-md h-full flex flex-col justify-between">
+          <div className="bg-white p-8 md:p-10 rounded-2xl border border-gray-200 hover:border-gray-400 transition duration-200 shadow-md h-full flex flex-col justify-between">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Contact Form
             </h2>
 
-            <form onSubmit={handlesubmit} className="flex flex-col gap-4 flex-1 justify-between">
+            <form onSubmit={handlesubmit} className="flex flex-col gap-4 flex-1 border border-transparent justify-between hover:border-gray-40">
               <input
                 type="text"
                 placeholder="Full Name"
                 value={formData.name}
       onChange={(e) =>{ setFormData({...formData, name: e.target.value}); setError({...error, name: ''});setIsSuccess(false);}}
       
-                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+                className="w-full px-5 py-3 rounded-lg  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] transition duration-200 focus:border-transparent text-gray-800 placeholder-gray-400"
               />
 <p className="text-red-600 text-sm">{error.name}</p>
               <input
@@ -158,7 +158,7 @@ setIsSuccess(true);
                 value={formData.email}
                 onChange={(e)=>{setFormData({...formData,email:e.target.value}); setError({...error, email: ''});setIsSuccess(false);}}
                 placeholder="Email Address"
-                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] transition duration-200 focus:border-transparent text-gray-800 placeholder-gray-400"
               />
               <p className="text-red-600 text-sm">{error.email}</p>
               <input
@@ -166,7 +166,7 @@ setIsSuccess(true);
                 placeholder="Subject"
                    value={formData.subject}
                 onChange={(e)=>{setFormData({...formData,subject:e.target.value}); setError({...error, subject: ''});setIsSuccess(false);}}
-                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400"
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] transition duration-200 focus:border-transparent text-gray-800 placeholder-gray-400"
               />
               <p className="text-red-600 text-sm">{error.subject}</p>
               <textarea
@@ -174,7 +174,7 @@ setIsSuccess(true);
                 placeholder="Your Message"
                    value={formData.message}
                 onChange={(e)=>{setFormData({...formData,message:e.target.value}); setError({...error,message:""}); setIsSuccess(false);}}
-                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent text-gray-800 placeholder-gray-400 resize-none flex-1"
+                className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A0522D] transition duration-200 focus:border-transparent text-gray-800 placeholder-gray-400 resize-none flex-1"
               />
               <p className="text-red-600 text-sm">{error.message}</p>
           <button
