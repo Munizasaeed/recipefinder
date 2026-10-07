@@ -39,7 +39,10 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
       {/* Results */}
       <div className="mt-8">
         
-        {loading && <p>Loading...</p>}
+        {loading &&  <div className="flex flex-col items-center justify-center py-10">
+            <div className="w-20 h-20 border-8 border-gray-200 border-t-orange-500 rounded-full animate-spin"></div>
+            <p className="mt-3 text-gray-500">Loading recipes...</p>
+        </div>}
         {error && <p className="text-red-500">{error}</p>}
         {!loading && !error && searchResults.length === 0  && noResultsTerm.trim() !== '' && (
           <p className="font-bold text-red-600 text-2xl">No results found for "{noResultsTerm}"</p>
@@ -50,7 +53,7 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 text-left">
             {searchResults.map((recipe) => (
               <div key={recipe.idMeal} className="bg-white rounded-lg shadow-md p-4  flex flex-col">
-                <img src={recipe.strMealThumb} alt={recipe.strMeal} className="w-full h-40 object-cover rounded-md mb-2" />
+                <img src={recipe.strMealThumb} alt={recipe.strMeal}  loading="lazy" className="w-full h-40 object-cover rounded-md mb-2" />
              <div className="flex items-start justify-between gap-2 mb-3">
             <h2 className="text-lg font-semibold">{recipe.strMeal}</h2>
             <span 

@@ -24,6 +24,7 @@ const RecipeCard = ({fetchRecipes}) => {
           <img 
             src={recipe.strMealThumb} 
             alt={recipe.strMeal} 
+             loading="lazy"
             className="w-full h-48 object-cover rounded-md mb-3" 
           />
         <div className="flex items-center justify-between gap-2 mb-3">
