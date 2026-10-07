@@ -20,7 +20,7 @@ const RecipeCard = ({fetchRecipes}) => {
     <p className="text-center mt-2 px-4 italic text-xl">Discover delicious recipes and new meals from around the world!</p>
     <div className="grid grid-cols-1 mt-7  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4">
       {fetchRecipes.filter((recipe) => recipe.strMeal.length <= 20).slice(0, 12).map((recipe) => (
-        <div key={recipe.idMeal} className="bg-white border border-gray-500 rounded-lg shadow-md p-4 flex flex-col">
+        <div key={recipe.idMeal} className="bg-white card-animation transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-gray-500 border border-gray-300 rounded-lg shadow-md p-4 flex flex-col">
           <img 
             src={recipe.strMealThumb} 
             alt={recipe.strMeal} 
@@ -34,13 +34,13 @@ const RecipeCard = ({fetchRecipes}) => {
     onClick={() => handleFavoriteClick(recipe)}
   >
     {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? (
-      <FontAwesomeIcon icon={solidHeart} className='text-red-500' style={{ fontSize: '20px' }} />
+      <FontAwesomeIcon icon={solidHeart} className='text-red-500  transition duration-200 hover:scale-110'  style={{ fontSize: '20px' }} />
     ) : (
-      <FontAwesomeIcon icon={regularHeart} className='text-gray-400' style={{ fontSize: '20px' }} />
+      <FontAwesomeIcon icon={regularHeart} className='text-gray-400 transition duration-200 hover:scale-110' style={{ fontSize: '20px' }} />
     )}
   </span>
 </div>
-          <Link to={`/recipe/${recipe.idMeal}`} className="w-full bg-orange-500 text-white py-2 text-center rounded-md hover:bg-orange-600 mt-auto">
+          <Link to={`/recipe/${recipe.idMeal}`} className="w-full bg-orange-500 text-white py-2 text-center rounded-md  hover:bg-orange-600 transition-colors duration-200 mt-auto">
             View Recipe
           </Link>
         </div>

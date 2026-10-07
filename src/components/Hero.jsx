@@ -22,7 +22,7 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
       </p>
 
     <div className="mt-6 flex justify-center px-2">
-  <div className="flex items-center w-full max-w-3xl border border-gray-300 rounded-2xl px-2 focus-within:ring-2 focus-within:ring-orange-500">
+  <div className="flex items-center w-full max-w-3xl border border-gray-300 rounded-2xl px-2 focus-within:ring-2 focus-within:ring-orange-500 transition duration-200">
     <input
       type="text"
       value={searchTerm}
@@ -30,7 +30,7 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
       placeholder="Search for recipes..."
       className="flex-1 min-w-0 py-2 px-2 focus:outline-none"
     />
-    <button onClick={onSearch} className="bg-orange-500 text-white py-1.5 px-3 sm:px-4 text-sm sm:text-base rounded-2xl hover:bg-orange-600 ml-2 my-1 shrink-0">
+    <button onClick={onSearch} className="bg-orange-500 text-white py-1.5 px-3 sm:px-4 text-sm sm:text-base rounded-2xl hover:bg-orange-600 transition duration-200 ml-2 my-1 shrink-0">
       Search
     </button>
   </div>

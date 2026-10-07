@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { UtensilsCrossed, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,9 +15,24 @@ const Navbar = () => {
 
         {/* Desktop Links - hidden on mobile, flex on md+ */}
         <div className="hidden md:flex items-center gap-6 italic text-xl">
-          <Link to="/">Home</Link>
-          <Link to="/favorites">Favorites</Link>
-          <Link to="/Contact">Contact</Link>
+        <NavLink to="/" className={({ isActive }) =>
+  `${isActive
+    ? "text-orange-500 font-semibold border-b-2 border-orange-500"
+    : "text-white"
+  } transition duration-200`
+}> Home</NavLink>
+        <NavLink to="/favorites"  className={({ isActive }) =>
+  `${isActive
+    ? "text-orange-500 font-semibold border-b-2 border-orange-500"
+    : "text-white"
+  } transition duration-200`
+} >Favorites</NavLink>
+        <NavLink to="/Contact"  className={({ isActive }) =>
+  `${isActive
+    ? "text-orange-500 font-semibold border-b-2 border-orange-500"
+    : "text-white"
+  } transition duration-200`
+} >Contact</NavLink>
         </div>
 
         {/* Hamburger Icon - only visible on mobile */}
