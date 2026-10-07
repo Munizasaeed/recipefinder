@@ -11,12 +11,9 @@ const RecipeItem = ({ recipe, favorites, handleFavoriteClick }) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
+     ([entry]) => {
+  setIsVisible(entry.isIntersecting);
+},
       {
         threshold: 0.1,
       }
@@ -80,11 +77,8 @@ const RecipeCard = ({ fetchRecipes }) => {
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const handleFavoriteClick = (recipe) => {
-    const isFavorite = favorites.some(
-      (fav) => fav.idMeal === recipe.idMeal
-    );
-
-    if (isFavorite) {
+    const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
+if (isFavorite) {
       setFavorites(
         favorites.filter((fav) => fav.idMeal !== recipe.idMeal)
       );

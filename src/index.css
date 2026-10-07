@@ -16,5 +16,29 @@ body {
     }
 }
 .card-animation {
-    animation: cardAnimation 0.8s ease-out;
+    animation: cardAnimation 1.5s ease-out;
+}
+
+@keyframes heroFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-animation {
+    animation: heroFadeUp 0.8s ease-out;
+}
+
+.hero-delay {
+    animation: heroFadeUp 0.8s ease-out 0.2s both;
+}
+
+.hero-search-animation {
+    animation: heroFadeUp 0.8s ease-out 0.4s both;
 }

@@ -16,12 +16,12 @@ const Hero = ({ searchTerm, setSearchTerm, onSearch, searchResults,noResultsTerm
   };
   return (
     <section className="bg-[#F9F6F0] bg-cover bg-center py-16 px-6 text-center">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium mb-4">Find Your Perfect Recipe</h1>
-      <p className="text-lg sm:text-xl md:text-xl italic">
+      <h1 className="text-4xl hero-animation  sm:text-5xl md:text-6xl font-medium mb-4">Find Your Perfect Recipe</h1>
+      <p className="text-lg sm:text-xl hero-delay md:text-xl italic">
         Discover Delicious Recipes, explore new flavors and find your next favourite meal
       </p>
 
-    <div className="mt-6 flex justify-center px-2">
+    <div className="mt-6 hero-search-animation flex justify-center px-2">
   <div className="flex items-center w-full max-w-3xl border border-gray-300 rounded-2xl px-2 focus-within:ring-2 focus-within:ring-orange-500 transition duration-200">
     <input
       type="text"
