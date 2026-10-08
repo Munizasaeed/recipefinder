@@ -191,7 +191,7 @@ const RecipeCard = ({ fetchRecipes }) => {
                   >
                     <FontAwesomeIcon
                       icon={isFav ? solidHeart : regularHeart}
-                      className={`text-base transition-colors duration-200 ${
+                      className={`text-base  transition-all hover:scale-110 duration-200 ${
                         isFav ? "text-red-600" : "text-black"
                       }`}
                     />
