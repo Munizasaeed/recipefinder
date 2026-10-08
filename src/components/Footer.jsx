@@ -1,37 +1,112 @@
 import { Link } from "react-router-dom";
-import { UtensilsCrossed} from "lucide-react";
+import { UtensilsCrossed, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-800 flex flex-col gap-5 md:flex-row text-white py-10 justify-around">
-      <div className="flex flex-col ml-10 gap-2">
-        <div className="flex  items-center gap-2">
-               <UtensilsCrossed className="text-orange-500" size={36} />
-               <p className="text-base transition duration-200 hover:scale-105 sm:text-lg md:text-3xl italic font-bold leading-tight">
-  Recipe<span className="block sm:inline"> Finder</span>
-</p>
+    <footer className="bg-gray-800 text-white">
+
+      <div className="px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <UtensilsCrossed
+              className="text-orange-500"
+              size={34}
+            />
+
+            <p className="text-2xl md:text-3xl italic font-bold">
+              Recipe<span className="text-orange-500"> Finder</span>
+            </p>
+          </div>
+
+          <p className="text-gray-300 max-w-sm leading-relaxed">
+            Discover delicious recipes and explore new meals from around
+            the world. Find your next favorite dish with Recipe Finder.
+          </p>
         </div>
-        <p className="max-w-sm  mr-2">
-  Discover delicious recipes and explore new meals from around the world!
-</p>
-      </div>
-      <div className=" ml-10 flex flex-col gap-2">
-          <p className="text-2xl font-bold text-orange-500 transition duration-200 hover:text-orange-700">Quick Links</p>
-            <Link to="/" className="transition duration-200 hover:font-bold">Home</Link>
-          <Link to="/favorites" className="transition duration-200 hover:font-bold">Favorites</Link>
-          <Link to="/" className="transition duration-200 hover:font-bold">About Us</Link>
-          <Link to="/Contact" className="transition duration-200 hover:font-bold">Contact</Link>
-      </div>
-       <div className="ml-10 flex flex-col gap-2">
-          <Link to="/Contact" className="text-xl font-bold text-orange-500 transition duration-200 hover:text-orange-700">Contact</Link>
-          <Link to="/Contact" className="transition duration-200 hover:font-bold">Email Us</Link>
-          <Link to="/Contact" className="transition duration-200 hover:font-bold">Support</Link>
-          <Link to="/Contact" className="transition duration-200 hover:font-bold">FAQ</Link>
-      </div>
-    </div>
-  )
-}
-
-export default Footer
 
 
+        {/* Quick Links */}
+        <div className="flex flex-col items-start md:items-center">
+          <h3 className="text-xl font-bold text-orange-500 mb-4">
+            Quick Links
+          </h3>
+
+          <div className="flex flex-col gap-3 text-gray-300">
+            <Link
+              to="/"
+              className="w-fit hover:text-orange-400 transition duration-200"
+            >
+              Home
+            </Link>
+
+            <Link
+              to="/favorites"
+              className="w-fit hover:text-orange-400 hover:underline transition duration-200"
+            >
+              Favorites
+            </Link>
+
+            <Link
+              to="/"
+              className="w-fit hover:text-orange-400 hover:underline transition duration-200"
+            >
+              About Us
+            </Link>
+
+            <Link
+              to="/Contact"
+              className="w-fit hover:text-orange-400 hover:underline transition duration-200"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+
+
+        {/* Contact */}
+        <div>
+           <Link
+              to="/Contact"
+              className=" inline-block  w-fit text-orange-400 hover:text-orange-300 hover:underline  text-xl font-bold pb-5 transition duration-200"
+            >
+               Contact Us
+            </Link>
+
+          <div className="flex flex-col gap-4 text-gray-300">
+
+            <a
+              href="mailto:support@recipefinder.com"
+              className="flex items-center gap-3 hover:text-orange-400 transition duration-200"
+            >
+              <Mail size={18} />
+              <span>support@recipefinder.com</span>
+            </a>
+
+            <a
+              href="tel:+15557324739"
+              className="flex items-center gap-3 hover:text-orange-400 transition duration-200"
+            >
+              <Phone size={18} />
+              <span>+1 555-RECIPE-X</span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      {/* Bottom */}
+      <div className="border-t border-gray-700">
+        <p className="text-center text-sm text-gray-400 py-5">
+          © 2026 Recipe Finder. All rights reserved.
+        </p>
+      </div>
+
+    </footer>
+  );
+};
+
+export default Footer;

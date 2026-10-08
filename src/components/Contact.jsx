@@ -76,20 +76,32 @@ setIsSuccess(true);
           {/* --- LEFT COLUMN: CONTACT DETAILS --- */}
           <div className="flex flex-col justify-between gap-4">
                   {/* Email, Phone, Address Cards */}
-         {contactInfo.map((info, index) => (
+  {contactInfo.map((info, index) => (
   <a
     key={index}
     href={info.link}
     target={info.external ? "_blank" : undefined}
-  rel={info.external ? "noopener" : undefined}
-    className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 shadow-sm flex items-center gap-6 flex-1 hover:shadow-md transition-shadow"
+    rel={info.external ? "noopener" : undefined}
+    className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 shadow-sm flex items-center gap-6 flex-1 hover:shadow-md"
   >
     <div className="w-14 h-14 rounded-full bg-[#A0522D]/10 flex items-center justify-center shrink-0 text-[#A0522D]">
       <FontAwesomeIcon icon={info.icon} className="text-xl" />
     </div>
+
     <div>
-      <h3 className="text-xl font-semibold text-gray-900">{info.title}</h3>
-      <p className="text-gray-700 mt-1 break-all">{info.value}</p>
+      <h3 className="text-xl font-semibold text-gray-900">
+        {info.title}
+      </h3>
+
+      <p
+        className={`mt-1 break-all ${
+          info.title === "Email"
+            ? "text-blue-600"
+            : "text-gray-700"
+        }`}
+      >
+        {info.value}
+      </p>
     </div>
   </a>
 ))}

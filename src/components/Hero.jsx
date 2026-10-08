@@ -35,7 +35,7 @@ const Hero = ({
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[450px] py-16  px-6 text-center">
+    <section className="relative overflow-hidden min-h-112.5 py-16  px-6 text-center">
 
       {/* Background Video */}
       <video
