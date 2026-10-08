@@ -203,7 +203,7 @@ const RecipeCard = ({ fetchRecipes }) => {
                       <FontAwesomeIcon icon={faClock} className="text-orange-600" />
                       ~{cookTime}
                     </span>
-                    <span className="flex items-center gap-1.5 truncate max-w-[120px]">
+                    <span className="flex items-center gap-1.5 truncate max-w-30">
                       <FontAwesomeIcon icon={faGlobe} className="text-orange-600" />
                       {recipeMeta}
                     </span>
