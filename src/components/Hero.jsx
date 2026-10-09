@@ -261,6 +261,7 @@ const Hero = ({
         muted
         loop
         playsInline
+          poster="/food-poster.png"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/food-video.mp4" type="video/mp4" />
